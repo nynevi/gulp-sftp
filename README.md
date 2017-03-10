@@ -9,7 +9,7 @@ Useful for uploading and deploying things via sftp. Right now this plugin just u
 ## Install
 
 ```bash
-$ npm install --save-dev gulp-sftp
+$ npm install --save-dev gulp-sftp-with-callbacks
 ```
 
 
@@ -17,7 +17,7 @@ $ npm install --save-dev gulp-sftp
 
 ```js
 var gulp = require('gulp');
-var sftp = require('gulp-sftp');
+var sftp = require('gulp-sftp-with-callbacks');
 
 gulp.task('default', function () {
 	return gulp.src('src/*')
@@ -159,7 +159,7 @@ For better security, save authentication data in a json formatted file named `.f
 
 ```js
 var gulp = require('gulp');
-var sftp = require('gulp-sftp');
+var sftp = require('gulp-sftp-with-callbacks');
 
 gulp.task('default', function () {
 	return gulp.src('src/*')
