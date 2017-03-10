@@ -4,7 +4,7 @@
 
 Useful for uploading and deploying things via sftp. Right now this plugin just uploads everything. Caching and hash comparison are two TODO items.  
 
-[![NPM](https://nodei.co/npm/gulp-sftp.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-sftp/)
+[![NPM](https://nodei.co/npm/gulp-sftp-with-callbacks.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-sftp-with-callbacks/)
 
 ## Install
 
@@ -134,11 +134,45 @@ Default: `null`
 
 Callback function to be called once the SFTP connection is started.
 
+```js
+var gulp = require('gulp');
+var sftp = require('gulp-sftp-with-callbacks');
+
+gulp.task('default', function () {
+	return gulp.src('src/*')
+		.pipe(sftp({
+			host: 'website.com',
+			user: 'johndoe',
+			pass: '1234',
+      onStart: function() {
+
+      }
+		}));
+});
+```
+
 #### options.onError
 type `function`
 Default: `null`
 
 Callback function to be called once the SFTP connection has errors.
+
+```js
+var gulp = require('gulp');
+var sftp = require('gulp-sftp-with-callbacks');
+
+gulp.task('default', function () {
+	return gulp.src('src/*')
+		.pipe(sftp({
+			host: 'website.com',
+			user: 'johndoe',
+			pass: '1234',
+      onError: function(error) {
+        
+      }
+		}));
+});
+```
 
 #### options.onEnd
 type `function`
@@ -146,11 +180,45 @@ Default: `null`
 
 Callback function to be called once the SFTP finished uploading files.
 
+```js
+var gulp = require('gulp');
+var sftp = require('gulp-sftp-with-callbacks');
+
+gulp.task('default', function () {
+	return gulp.src('src/*')
+		.pipe(sftp({
+			host: 'website.com',
+			user: 'johndoe',
+			pass: '1234',
+      onEnd: function() {
+        
+      }
+		}));
+});
+```
+
 #### options.onClose
 type `function`
 Default: `null`
 
 Callback function to be called once the SFTP connection is closed.
+
+```js
+var gulp = require('gulp');
+var sftp = require('gulp-sftp-with-callbacks');
+
+gulp.task('default', function () {
+	return gulp.src('src/*')
+		.pipe(sftp({
+			host: 'website.com',
+			user: 'johndoe',
+			pass: '1234',
+      onClose: function() {
+        
+      }
+		}));
+});
+```
 
 
 ##Authentication
@@ -214,6 +282,9 @@ gulp.task('deploy:test', function () {
     });
 });
 ```
+
+##PR to the official repo:
+[Added onStart, onError, onEnd, onClose callbacks] (https://github.com/gtg092x/gulp-sftp/pull/69)
 
 ##Known Issues
 
